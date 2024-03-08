@@ -1,0 +1,11 @@
+[profile.release]
+strip = "none"
+debug = "full"
+overflow-checks = true
+
+[workspace]
+resolver = "2"
+members = [
+    "main",
+    "config_template_derive",
+]
