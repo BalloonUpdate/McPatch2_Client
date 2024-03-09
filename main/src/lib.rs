@@ -4,9 +4,6 @@ use std::path::PathBuf;
 
 use crate::app_config::AppConfig;
 
-// const CONFIG_TEMPLATE_STRING: &str = include_str!("../config.template.yml");
-
-
 pub struct AppContext {
     pub working_dir: PathBuf,
     pub workspace_dir: PathBuf,
