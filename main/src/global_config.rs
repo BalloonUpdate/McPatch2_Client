@@ -1,9 +1,9 @@
-use std::path::PathBuf;
+use std::path::Path;
 
 use config_template_derive::ConfigTemplate;
 
 #[derive(ConfigTemplate)]
-pub struct AppConfig {
+pub struct GlobalConfig {
     /// 更新服务器上的索引文件的链接，可以填写多个备用链接以缓解网络不稳定
     /// 目前支持的协议：http(s)、webdav(s)、私有协议
     ///
@@ -28,7 +28,7 @@ pub struct AppConfig {
     /// 记录客户端版本号文件的路径
     /// 客户端的版本号会被存储在这个文件里，并以此为依据判断是否更新到了最新版本
     #[default_value("mcpatch-version.txt")]
-    pub version_file_path: PathBuf,
+    pub version_file_path: String,
 
     /// 更新的起始目录，也就是要把文件都更新到哪个目录下
     /// 默认情况下程序会智能搜索，并将所有文件更新到.minecraft父目录下（也是启动主程序所在目录），
@@ -39,7 +39,7 @@ pub struct AppConfig {
     /// 3. 当此选项的值是'..'时，会把当前工作目录的上级目录作为更新起始目录
     /// 4. 当此选项的值是别的时，比如'ab/cd'时，会把当前工作目录下的ab目录里面的cd目录作为更新起始目录
     #[default_value("''")]
-    pub base_path: PathBuf,
+    pub base_path: String,
 
     /// 当程序发生错误而更新失败时，是否可以继续进入游戏
     /// 如果为true，发生错误时会忽略错误，正常启动游戏，但是可能会因为某些新模组未下载无法进服
@@ -92,4 +92,10 @@ pub struct AppConfig {
     /// http类协议：是否忽略SSL证书验证
     #[default_value("false")]
     pub http_ignore_certificate: bool,
+}
+
+impl GlobalConfig {
+    pub fn load(file: &Path) -> Self {
+        todo!()
+    }
 }

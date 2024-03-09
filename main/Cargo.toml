@@ -10,3 +10,4 @@ crc = "3.0.1"
 json = "0.12.4"
 yaml-rust = "0.4.5"
 config_template_derive = { path = "../config_template_derive" }
+tokio = { version = "1.36.0", features = ["full"] }
